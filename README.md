@@ -1,30 +1,24 @@
 # Task-Killer
 
-Task-Killer is a GitHub repository designed to automatically terminate processes on a loop. It reads in a `processes.txt` file which contains a list of processes to be killed and a delay time. It then iterates through the list and terminates them one by one, printing out the name of the process and its PID and the time it was started. Finally, it returns the number of processes terminated and the delay time. 
+Task-Killer is a GitHub repository that automates the process of killing processes on a loop. It contains a single Python script, `end_processes.py`, which reads the `processes.txt` and `processes2.txt` files and terminates each process in the list.
 
 ## Usage
 
-The main code is located in the `end_processes.py` file. The `end_processes_loop()` function reads in the `processes.txt` file, which contains a list of processes to be killed and a delay time. It then iterates through the list of processes and terminates them one by one. It also prints out the name of the process and its PID and the time it was started. Finally, it returns the number of processes terminated and the delay time. 
+Using the Task-Killer code is straightforward. First, you'll need to identify which processes you want to kill and add them to the appropriate file (either `processes.txt` or `processes2.txt`). The `processes.txt` file includes a delay of 0.1 and a list of processes that may be killed, such as `sqlbrowser.exe`, `sqlwriter.exe`, `sldworks_fs.exe`, `gamingservices`, `FNPLicensingService`, `gameinputsvc`, `AdobeCollabSync`, `GameLibraryAppService`, `remotesolverdispatcherservice`, `Microsoft.Photos.exe`, `SearchApp`, `StartMenuExperienceHost.exe`, `LockApp`, `TextInputHost`, `armsvc.exe`, `EwServer.exe`, `TbtP2pShortcutService`, `ThunderboltService`, `WMIRegistrationService`, `dispatcher.exe`, `Zune`, `Video.UI.exe`, `DbxSvc.exe`, `DropboxUpdate.exe`, and `WMI Performance Reverse Adapter`. The `processes2.txt` file includes a delay of 0.1 and a list of processes that may be killed, such as `RTHDCPL.exe`, `RtHDVCpl.exe`, `rtHDVRpl.exe`, `rtHDVBpl.exe`, `rtHDVPl.exe`, `rtHDVCl.exe`, `rtHDVSL.exe`, `rtHDVFl.exe`, `rtHDVBl.exe`, `rtHDVGl.exe`, `rtHDVUl.exe`, `rtHDVYl.exe`, `rtHDVAl.exe`, `rtHDVCl.exe`, `rtHDVPl.exe`, `rtHDVSl.exe`, `rtHDVFl.exe`, `rtHDVBl.exe`, `rtHDVGl.exe`, `rtHDVUl.exe`, `rtHDVYl.exe`, `rtHDVAl.exe`, `rtHDVCl.exe`, `rtHDVPl.exe`, `rtHDVSl.exe`, `rtHDVFl.exe`, `rtHDVBl.exe`, `rtHDVGl.exe`, `rtHDVUl.exe`, and `rtHDVYl.exe`.
 
-The `main()` function prints out the current time and then runs `end_processes_loop()`, sleeps for the delay time, and repeats. It also handles AccessDenied errors by printing out the error and sleeping for the delay time. 
+Once you have identified the processes to be killed and added them to the appropriate file, you can then run the `end_processes.py` script. The script will read the `processes.txt` or `processes2.txt` file and create a list of processes to be terminated. For each process in the list, it will terminate the process and print a message with the process name, PID, and start time. Lastly, the script will sleep for the specified delay and repeat the loop. If the process cannot be terminated due to an access denied error, the script will sleep for the specified delay and then try again.
 
-The code attempts to end processes using the `os.kill` command, and catches any errors that may occur. If an error is encountered, the code prints the error and waits two seconds before trying again. In the case of a `PermissionError`, the code grabs the process ID (pid) from the error message and prints it. It does not actually kill the process, however, as the `os.kill` command is commented out.
+#### Example
 
-### Example
-
-Let's say the `processes.txt` file contains the following:
+Let's say you have a `processes.txt` file that contains the following:
 
 ```
-chrome.exe, 10
-notepad.exe, 5
+process1, 5
+process2, 10
 ```
 
-This means that the `end_processes_loop()` function will attempt to terminate the `chrome.exe` and `notepad.exe` processes, and will wait 10 and 5 seconds respectively before attempting to terminate them again. The `main()` function will then print the current time and run the `end_processes_loop()` function, sleep for the delay time, and repeat. 
+This file tells the `end_processes.py` script to terminate `process1` and `process2`, and to wait 5 and 10 seconds, respectively, between each loop. When you run the script, it will terminate `process1`, wait 5 seconds, terminate `process2`, wait 10 seconds, and then repeat the loop.
 
-If any errors are encountered, the code will print the error and wait two seconds before trying again. If a `PermissionError` is encountered, the code will grab the process ID (pid) from the error message and print it, but will not actually kill the process.
+## Conclusion
 
-## Usage
-
-To use Task-Killer, first clone the repository to your local machine. Then, edit the `processes.txt` file to include the processes you want to terminate and the delay time between terminations. Finally, run the `end_processes.py` file to begin the process of terminating the processes. 
-
-The code will attempt to terminate the processes, and if any errors are encountered, it will print the error and wait two seconds before trying again. If a `PermissionError` is encountered, the code will grab the process ID (pid) from the error message and print it, but will not actually kill the process.
+Task-Killer is a GitHub repository that automates the process of killing processes on a loop. It contains a single Python script, `end_processes.py`, which reads the `processes.txt` and `processes2.txt` files and terminates each process in the list. To use Task-Killer, first create a `processes.txt` or `processes2.txt` file that contains a list of processes to be killed, along with the delay between each loop. Then, run the `end_processes.py` script. The script will read the file and create a list of processes to be terminated. For each process in the list, it will terminate the process and print a message with the process name, PID, and start time. Lastly, the script will sleep for the specified delay and repeat the loop. If the process cannot be terminated due to an access denied error, the script will sleep for the specified delay and then try again.
