@@ -1,0 +1,36 @@
+delay:0.1
+sqlbrowser.exe
+sqlwriter.exe
+sldworks_fs.exe
+gamingservices
+FNPLicensingService
+gameinputsvc
+AdobeCollabSync
+GameLibraryAppService
+remotesolverdispatcherservice
+Microsoft.Photos.exe
+###Shadow Copy
+
+
+
+
+### These may be ok: ###
+# SearchApp
+# StartMenuExperienceHost.exe
+LockApp
+TextInputHost
+armsvc.exe
+EwServer.exe
+TbtP2pShortcutService
+ThunderboltService
+WMIRegistrationService
+dispatcher.exe
+Zune
+Video.UI.exe
+
+### Dropbox ###
+DbxSvc.exe
+DropboxUpdate.exe
+
+
+WMI Performance Reverse Adapter
