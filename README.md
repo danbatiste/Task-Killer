@@ -1,24 +1,53 @@
 # Task-Killer
-
-Task-Killer is a GitHub repository that automates the process of killing processes on a loop. It contains a single Python script, `end_processes.py`, which reads the `processes.txt` and `processes2.txt` files and terminates each process in the list.
+Task-Killer is a GitHub repository that automatically kills processes on a loop. It works by reading in a file called `processes.txt`, which contains a delay time followed by a list of processes to be killed. The code then loops through the list of processes, killing each one in turn, and then waits for the specified delay time before looping again. The code also prints out the process name and PID of each process that is killed. If no processes are found to be killed, it will print out a message notifying the user. 
 
 ## Usage
+To use Task-Killer, you must first clone the repository and then run the `processes.txt` file. This file contains two chunks: a list of processes that will be automatically killed on a loop and a list of processes that will be excluded from the loop. The delay for each loop is set to 0.1.
 
-Using the Task-Killer code is straightforward. First, you'll need to identify which processes you want to kill and add them to the appropriate file (either `processes.txt` or `processes2.txt`). The `processes.txt` file includes a delay of 0.1 and a list of processes that may be killed, such as `sqlbrowser.exe`, `sqlwriter.exe`, `sldworks_fs.exe`, `gamingservices`, `FNPLicensingService`, `gameinputsvc`, `AdobeCollabSync`, `GameLibraryAppService`, `remotesolverdispatcherservice`, `Microsoft.Photos.exe`, `SearchApp`, `StartMenuExperienceHost.exe`, `LockApp`, `TextInputHost`, `armsvc.exe`, `EwServer.exe`, `TbtP2pShortcutService`, `ThunderboltService`, `WMIRegistrationService`, `dispatcher.exe`, `Zune`, `Video.UI.exe`, `DbxSvc.exe`, `DropboxUpdate.exe`, and `WMI Performance Reverse Adapter`. The `processes2.txt` file includes a delay of 0.1 and a list of processes that may be killed, such as `RTHDCPL.exe`, `RtHDVCpl.exe`, `rtHDVRpl.exe`, `rtHDVBpl.exe`, `rtHDVPl.exe`, `rtHDVCl.exe`, `rtHDVSL.exe`, `rtHDVFl.exe`, `rtHDVBl.exe`, `rtHDVGl.exe`, `rtHDVUl.exe`, `rtHDVYl.exe`, `rtHDVAl.exe`, `rtHDVCl.exe`, `rtHDVPl.exe`, `rtHDVSl.exe`, `rtHDVFl.exe`, `rtHDVBl.exe`, `rtHDVGl.exe`, `rtHDVUl.exe`, `rtHDVYl.exe`, `rtHDVAl.exe`, `rtHDVCl.exe`, `rtHDVPl.exe`, `rtHDVSl.exe`, `rtHDVFl.exe`, `rtHDVBl.exe`, `rtHDVGl.exe`, `rtHDVUl.exe`, and `rtHDVYl.exe`.
+For example, if you wanted to kill `sqlbrowser.exe`, `sqlwriter.exe`, and `sldworks_fs.exe` on a loop, you would add these processes to the list of processes that will be killed in the `processes.txt` file. Additionally, if you wanted to exclude `explorer.exe`, `taskmgr.exe`, `dwm.exe`, and `ctfmon.exe` from the loop, you would add these processes to the list of processes that will be excluded in the `processes.txt` file.
 
-Once you have identified the processes to be killed and added them to the appropriate file, you can then run the `end_processes.py` script. The script will read the `processes.txt` or `processes2.txt` file and create a list of processes to be terminated. For each process in the list, it will terminate the process and print a message with the process name, PID, and start time. Lastly, the script will sleep for the specified delay and repeat the loop. If the process cannot be terminated due to an access denied error, the script will sleep for the specified delay and then try again.
+The code also handles exceptions that occur when attempting to kill a process. If a PermissionError is raised, it will extract the process ID from the error message and print it out. If any other exception is raised, it will print out the error message and continue. Finally, it will wait for two seconds before attempting to kill the process again.
 
-#### Example
+## Processes to be Killed
+The list of processes that will be killed on a loop includes:
 
-Let's say you have a `processes.txt` file that contains the following:
+- sqlbrowser.exe
+- sqlwriter.exe
+- sldworks_fs.exe
+- gamingservices
+- FNPLicensingService
+- gameinputsvc
+- AdobeCollabSync
+- GameLibraryAppService
+- remotesolverdispatcherservice
+- Microsoft.Photos.exe
+- Shadow Copy
+- SearchApp
+- StartMenuExperienceHost.exe
+- LockApp
+- TextInputHost
+- armsvc.exe
+- EwServer.exe
+- TbtP2pShortcutService
+- ThunderboltService
+- WMIRegistrationService
+- dispatcher.exe
+- Zune
+- Video.UI.exe
+- DbxSvc.exe
+- DropboxUpdate.exe
+- WMI Performance Reverse Adapter
 
-```
-process1, 5
-process2, 10
-```
+## Processes to be Excluded
+The list of processes that will be excluded from the loop includes:
 
-This file tells the `end_processes.py` script to terminate `process1` and `process2`, and to wait 5 and 10 seconds, respectively, between each loop. When you run the script, it will terminate `process1`, wait 5 seconds, terminate `process2`, wait 10 seconds, and then repeat the loop.
-
-## Conclusion
-
-Task-Killer is a GitHub repository that automates the process of killing processes on a loop. It contains a single Python script, `end_processes.py`, which reads the `processes.txt` and `processes2.txt` files and terminates each process in the list. To use Task-Killer, first create a `processes.txt` or `processes2.txt` file that contains a list of processes to be killed, along with the delay between each loop. Then, run the `end_processes.py` script. The script will read the file and create a list of processes to be terminated. For each process in the list, it will terminate the process and print a message with the process name, PID, and start time. Lastly, the script will sleep for the specified delay and repeat the loop. If the process cannot be terminated due to an access denied error, the script will sleep for the specified delay and then try again.
+- explorer.exe
+- taskmgr.exe
+- dwm.exe
+- ctfmon.exe
+- msiexec.exe
+- apphelp.exe
+- taskhostw.exe
+- conhost.exe
+- wininit.exe
+- winlogon.exe
